@@ -5,4 +5,4 @@ if shape == 'circle':
     turtle.reset()
     turtle.circle(50)
 
-turtle.exitionclick()
+turtle.exitonclick()
