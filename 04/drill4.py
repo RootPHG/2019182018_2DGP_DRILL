@@ -9,4 +9,15 @@ while (count >= 0):
     turtle.forward(500)
     count -= 1
 
+turtle.right(90)
+count = 5
+while (count >= 0):
+    turtle.penup()
+    turtle.goto(0, count * 100)
+    turtle.pendown()
+    turtle.forward(500)
+    count -= 1
+
+turtle.exitonclick()
+
     
