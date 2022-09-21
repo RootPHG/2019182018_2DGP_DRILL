@@ -1,0 +1,27 @@
+import pico2d
+Pico2d is prepared.
+pico2d.open_canvas()
+pico2d.hide_lattice()
+pico2d.show_lattice()
+pico2d.close_canvas()
+pico2d.open_canvas(1280, 720)
+pico2d.close_canvas()
+pico2d.open_canvas()
+img = pico2d.load_image('character.png')
+cannot load character.png
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    img = pico2d.load_image('character.png')
+  File "C:\python\lib\site-packages\pico2d\pico2d.py", line 340, in load_image
+    raise IOError
+OSError
+import os
+os.getcwd()
+'C:\\python'
+os.listdir()
+['DLLs', 'Doc', 'include', 'Lib', 'libs', 'LICENSE.txt', 'NEWS.txt', 'python.exe', 'python3.dll', 'python310.dll', 'pythonw.exe', 'Scripts', 'tcl', 'Tools', 'vcruntime140.dll', 'vcruntime140_1.dll']
+os.chdir('d:/2DGP2/2019182018_2DGP_DRILL/06')
+os.listdir()
+['.gitattributes', '.gitignore', 'character.png', 'character_grass.py', 'grass.png']
+img = pico2d.load_image('character.png')
+img.draw_now(400, 300)
