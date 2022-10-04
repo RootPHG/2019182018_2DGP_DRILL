@@ -9,7 +9,6 @@ frame = 0
 
 direction = 3
 
-
 x, y = 0
 
 def drawing(direction):
