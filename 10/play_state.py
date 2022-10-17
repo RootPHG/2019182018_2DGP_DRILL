@@ -63,30 +63,26 @@ def handle_events():
 
 
 
-boy = None
+team = None
 grass = None
 running = None
-boy_count = 0
-
 
 def enter():
-    global boy, grass, running
+    global team, grass, running
 
-    boy = [Boy()]
+    team = [Boy()]
 
     grass = Grass()
     running = True
 
 def exit():
-    global boy, grass
-    for i in range(0, boy_count+1):
-        del boy[i]
-    del boy
+    global team, grass
+    del team
     del grass
 
 def update():
-    for i in range(0, boy_count+1):
-        boy[i].update()
+    for boy in team:
+        boy.update()
 
 def draw():
     clear_canvas()
@@ -96,8 +92,8 @@ def draw():
 
 def draw_world():
     grass.draw()
-    for i in range(0, boy_count+1):
-        boy[i].draw()
+    for boy in team:
+        boy.draw()
 
     pass
 
