@@ -2,7 +2,7 @@ from pico2d import *
 import game_framework
 import title_state
 import item_state
-import player_add_state
+import boy_add_state
 
 class Grass:
     def __init__(self):
@@ -57,8 +57,8 @@ def handle_events():
                 game_framework.quit()
             elif event.key == SDLK_i:
                 game_framework.push_state(item_state)
-            elif event.key == SDLK_a:
-                game_framework.push_state(player_add_state)
+            elif event.key == SDLK_b:
+                game_framework.push_state(boy_add_state)
 
 
 
