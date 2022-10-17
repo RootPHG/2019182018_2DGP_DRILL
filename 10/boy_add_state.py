@@ -38,9 +38,11 @@ def handle_events():
                 case pico2d.SDLK_ESCAPE:
                     game_framework.pop_state()
                 case pico2d.SDLK_k:
-                    play_state.team.append(play_state.Boy)
+                    play_state.range += 1
+                    play_state.enter()
                     game_framework.pop_state()
                 case pico2d.SDLK_j:
-                    if len(play_state.team) > 1:
-                        play_state.team.unite(play_state.Boy)
+                    if play_state.range > 1:
+                        play_state.range -= 1
+                        play_state.enter()
                     game_framework.pop_state()
