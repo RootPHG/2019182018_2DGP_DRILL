@@ -66,29 +66,27 @@ def handle_events():
 boy = None
 grass = None
 running = None
-player_count = 0
+boy_count = 0
 
 
 def enter():
     global boy, grass, running
 
-    # boy = [Boy()]
-    boy = Boy()
+    boy = [Boy()]
 
     grass = Grass()
     running = True
 
 def exit():
     global boy, grass
-    # for i in range(0,player_count+1):
-    #     del boy[i]
+    for i in range(0, boy_count+1):
+        del boy[i]
     del boy
     del grass
 
 def update():
-    # for i in range(0, player_count+1):
-    #     boy[i].update()
-    boy.update()
+    for i in range(0, boy_count+1):
+        boy[i].update()
 
 def draw():
     clear_canvas()
@@ -98,7 +96,7 @@ def draw():
 
 def draw_world():
     grass.draw()
-    for i in range(0, player_count+1):
+    for i in range(0, boy_count+1):
         boy[i].draw()
 
     pass
@@ -110,4 +108,4 @@ def pause():
 def resume():
     pass
 
-# game main loop code
+
