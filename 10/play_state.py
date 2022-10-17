@@ -66,11 +66,12 @@ def handle_events():
 team = None
 grass = None
 running = None
+range = 1
 
 def enter():
     global team, grass, running
 
-    team = [Boy()]
+    team = [Boy()] * range
 
     grass = Grass()
     running = True
