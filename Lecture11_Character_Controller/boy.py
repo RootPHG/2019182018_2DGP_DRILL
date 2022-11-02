@@ -2,9 +2,10 @@ from pico2d import *
 
 # 이벤트 정의
 # RD, LD, RU, LU= 0, 1, 2, 3
-RD, LD, RU, LU, TIMER = range(5)
+RD, LD, RU, LU, TIMER, PA = range(6)
 
 key_event_table = {
+    (SDL_KEYDOWN, SDLK_a) : PA,
     (SDL_KEYDOWN, SDLK_RIGHT) : RD,
     (SDL_KEYDOWN, SDLK_LEFT) : LD,
     (SDL_KEYUP, SDLK_RIGHT) : RU,
@@ -97,11 +98,47 @@ class SLEEP:
 
         pass
 
+
+class AUTO:
+    @staticmethod
+    def enter(self, event):
+        self.dir = self.face_dir
+        pass
+
+    @staticmethod
+    def exit(self):
+        print('EXIT RUN')
+        self.face_dir = self.dir
+        pass
+
+    @staticmethod
+    def do(self):
+        self.frame = (self.frame + 1) % 8
+        # x 좌표 변경, 달리기
+        self.x += self.dir
+        if self.x <= 0 :
+            self.dir = 1
+        elif self.x >= 800 :
+            self.dir = -1
+        pass
+
+    @staticmethod
+    def draw(self):
+        if self.dir == -1:
+            self.image.clip_draw(self.frame*100, 0, 100, 100, self.x, self.y + 30, 200, 200)
+        elif self.dir == 1:
+            self.image.clip_draw(self.frame*100, 100, 100, 100, self.x, self.y + 30, 200, 200)
+
+        pass
+
+
+
 #3 상태 변환 구현
 next_state = {
+    AUTO:   {RD: RUN,   LD: RUN,    PA:    IDLE},
     SLEEP:  {RD: RUN,   LD: RUN,    RU: RUN,    LU: RUN, TIMER: SLEEP},
-    IDLE :  {RU: RUN,   LU: RUN,    RD: RUN,    LD: RUN, TIMER: SLEEP},
-    RUN :   {RU: IDLE,  LU: IDLE,   RD: IDLE,   LD: IDLE,}
+    IDLE :  {RU: RUN,   LU: RUN,    RD: RUN,    LD: RUN, TIMER: SLEEP,  PA: AUTO},
+    RUN :   {RU: IDLE,  LU: IDLE,   RD: IDLE,   LD: IDLE,PA:    AUTO}
 }
 
 
