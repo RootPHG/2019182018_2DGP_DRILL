@@ -40,6 +40,7 @@ class RUN:
     @staticmethod
     def enter(self, event):
         print('ENTER RUN')
+        self.dir = 0
         # 방향을 결정해야 하는데, 뭘 근거로? 어떤 키가 눌렸기때문에?
         # 키 이벤트 정보가 필요.
         if event == RD:
@@ -135,7 +136,7 @@ class AUTO:
 
 #3 상태 변환 구현
 next_state = {
-    AUTO:   {RD: RUN,   LD: RUN,    PA:    IDLE},
+    AUTO:   {RD: RUN,   LD: RUN,    RU: AUTO,   LU: AUTO,PA:    IDLE},
     SLEEP:  {RD: RUN,   LD: RUN,    RU: RUN,    LU: RUN, TIMER: SLEEP},
     IDLE :  {RU: RUN,   LU: RUN,    RD: RUN,    LD: RUN, TIMER: SLEEP,  PA: AUTO},
     RUN :   {RU: IDLE,  LU: IDLE,   RD: IDLE,   LD: IDLE,PA:    AUTO}
