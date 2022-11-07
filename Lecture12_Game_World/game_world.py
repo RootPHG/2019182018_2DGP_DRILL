@@ -23,6 +23,6 @@ def clear():
     for o in all_objects():
         del o
     for layer in objects:
-        layer.claer()
+        layer.clear()
 
 
