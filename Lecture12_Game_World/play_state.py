@@ -23,21 +23,23 @@ def handle_events():
 def enter():
     global boy
     boy = Boy()
-    grass = Grass()
+    grass0 = Grass(30)
+    grass1 = Grass(10)
     game_world.add_object(boy, 1)
-    game_world.add_object(grass, 0)
+    game_world.add_object(grass0, 0)
+    game_world.add_object(grass1, 1)
 
 # 종료
 def exit():
-    game_world.claer()
+    game_world.clear()
     pass
 
 def update():
-    for game_object in game_world.add_object():
+    for game_object in game_world.all_objects():
         game_object.update()
 
 def draw_world():
-    for game_object in game_world.add_object():
+    for game_object in game_world.all_objects():
         game_object.draw()
 
 def draw():
