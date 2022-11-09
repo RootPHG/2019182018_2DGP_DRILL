@@ -4,6 +4,7 @@ import game_world
 
 from grass import Grass
 from boy import Boy
+from bird import Bird
 
 
 boy = None
@@ -23,10 +24,12 @@ def handle_events():
 # 초기화
 def enter():
     global boy, grass
+    bird = Bird()
     boy = Boy()
     grass = Grass()
     game_world.add_object(grass, 0)
     game_world.add_object(boy, 1)
+    game_world.add_object(bird, 1)
 
 
 # 종료
